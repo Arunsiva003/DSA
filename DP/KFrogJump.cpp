@@ -1,10 +1,7 @@
-
-
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
+//Recursion With MEMO
 int helper(int ind,vector<int>& arr,vector<int>& dp,int k){
     if(ind==0) return 0;
     if(dp[ind]!=-1) return dp[ind];
@@ -26,8 +23,21 @@ int frogJump1(int n, vector<int> &arr,int k) {
 
 int main(){
     vector<int> arr;
-     arr = {10,30,40,50,20};
-     int k=3;
-    cout<<frogJump1(4,arr,2);
+     arr = {10,20,30,10};
+     int k=2;
+     int n = arr.size();
+    // cout<<frogJump1(4,arr,2);
+
+    //DP
+    vector<int> dp(n,INT_MAX);
+    dp[0]=0;
+    for(int i=1;i<n;i++){
+        for(int j=1;j<=k;j++){
+            if(i>=j){
+                dp[i] = min(dp[i],dp[i-j]+abs(arr[i]-arr[i-j]));
+            }
+        }
+    }
+    cout<<dp[n-1];
     return 0;
 }
