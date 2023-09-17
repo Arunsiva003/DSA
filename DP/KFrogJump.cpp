@@ -27,8 +27,7 @@ int main(){
      int k=2;
      int n = arr.size();
     // cout<<frogJump1(4,arr,2);
-
-    //DP
+    
     vector<int> dp(n,INT_MAX);
     dp[0]=0;
     for(int i=1;i<n;i++){
